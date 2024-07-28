@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   try {
-    const category = await Category.findByPk(req.params, { include: [Product] });
+    const category = await Category.findByPk(req.params.id, { include: [Product] });
     if (!category) {
       res.status(400).json({ message: 'Unable to find category' });
       return;
