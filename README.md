@@ -15,7 +15,7 @@
 - You're able to update, create, search, and delete all products, categories, and tags.
 
 ## License
-- Licensed under MIT License. For more information: [license](opensource.org/license/MIT)
+- Licensed under MIT License. For more information: [license](https://opensource.org/license/MIT)
 
 ## Features
 - SQL
