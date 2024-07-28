@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
   // create a new category
   try {
     const newCategory = await Category.create(req.body);
-    res.status(200).json(createCategory);
+    res.status(200).json(newCategory);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -44,7 +44,7 @@ router.put('/:id', async (req, res) => {
   try {
     const updateCategory = await Category.update(req.body, {
       where: {
-        id: params.id
+        id: req.params.id,
       },
     })
     if (!updateCategory) {
@@ -66,7 +66,7 @@ router.delete('/:id', async (req, res) => {
         id: req.params.id,
       },
     });
-    if (deleteCategory) {
+    if (!deleteCategory) {
       res.status(400).json({ message: 'Unable to find a category with that id' });
       return;
     } else {
