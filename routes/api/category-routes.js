@@ -5,9 +5,8 @@ const { Category, Product } = require('../../models');
 
 router.get('/', async (req, res) => {
   // find all categories
-  // be sure to include its associated Products
   try {
-    const category = await Category.findAll({ include: Product });
+    const category = await Category.findAll({ include: [Product] });
     res.json({ category, message: 'Accessing Categories' })
   } catch (err) {
     res.status(400).json(err);
@@ -17,9 +16,8 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   // find one category by its `id` value
-  // be sure to include its associated Products
   try {
-    const category = await Category.findByPk(req.params, { include: Product });
+    const category = await Category.findByPk(req.params, { include: [Product] });
     if (!category) {
       res.status(400).json({ message: 'Unable to find category' });
       return;
